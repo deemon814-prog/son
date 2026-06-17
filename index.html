@@ -23,18 +23,18 @@ th{text-transform:none}.thead-group th{position:sticky;top:0;z-index:6;backgroun
 /* Supply-chain dashboard layout */
 :root{--olive:#59682f;--olive-dark:#203915;--olive-mid:#6d7f35;--dash-bg:#f2f2f0;--card-line:#d0d3ca}
 body{background:var(--dash-bg);font-family:Inter,Roboto,"Segoe UI",Arial,sans-serif}
-.dashboard-shell{max-width:1780px;margin:0 auto;padding:18px 22px 26px}
+.dashboard-shell{max-width:1780px;margin:0 auto;padding:18px 82px 26px 22px}
 .report-hero{position:static;background:var(--olive);border:1px solid rgba(33,48,22,.15);border-radius:18px;box-shadow:0 3px 8px rgba(17,24,39,.25);padding:24px 28px;margin-bottom:10px;text-align:center}
 .report-hero h1{margin:0;color:#fff;font-size:30px;line-height:1.2;font-weight:850;letter-spacing:.01em}
-.dashboard-layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:12px;align-items:start}
+.dashboard-layout{display:grid;grid-template-columns:292px minmax(0,1fr);gap:12px;align-items:start}
 .dashboard-sidebar{position:sticky;top:12px;display:grid;gap:10px;padding:4px 0}
 .side-kpis{display:grid;gap:10px}
-.side-kpis .kpi{min-height:88px;border:0;border-radius:10px;background:var(--olive-dark);color:#fff;text-align:center;padding:14px 10px;box-shadow:0 1px 3px rgba(17,24,39,.22)}
+.side-kpis .kpi{min-height:88px;border:0;border-radius:10px;background:var(--olive-dark);color:#fff;text-align:center;padding:14px 12px;box-shadow:0 1px 3px rgba(17,24,39,.22);overflow:visible}
 .side-kpis .kpi:before{display:none}
 .side-kpis .kpi.ok,.side-kpis .kpi.warn{background:var(--olive-dark)}
 .side-kpis .kpi .label{color:#d9e1c7;font-size:12px;font-weight:700}
-.side-kpis .kpi .value{color:#fff;font-size:30px;margin-top:5px;font-weight:850}
-.side-kpis .kpi .hint{color:#d9e1c7;font-size:11px;margin-top:4px}
+.side-kpis .kpi .value{color:#fff;font-size:clamp(23px,1.7vw,30px);line-height:1.12;margin-top:5px;font-weight:850;white-space:normal;overflow-wrap:anywhere}
+.side-kpis .kpi .hint{color:#d9e1c7;font-size:11px;margin-top:4px;white-space:normal;overflow-wrap:anywhere}
 .filter-card{background:var(--olive-dark);border-radius:8px;padding:10px 12px;color:#fff;box-shadow:0 1px 3px rgba(17,24,39,.2)}
 .filter-card label{display:block;margin-bottom:6px;font-size:12px;color:#d9e1c7;font-weight:800}
 .filter-card input,.filter-card select{width:100%;min-width:0;height:34px;border-radius:2px;border:1px solid rgba(230,238,214,.45);background:#2b451d;color:#fff;padding:6px 8px}
@@ -42,9 +42,10 @@ body{background:var(--dash-bg);font-family:Inter,Roboto,"Segoe UI",Arial,sans-se
 .filter-card option{background:#fff;color:#111827}
 .status-filter{padding-bottom:12px}
 .status-filter .status-tabs{display:grid;gap:7px;width:100%;padding:0}
-.status-filter .status-tabs button{justify-content:space-between;display:flex;align-items:center;width:100%;height:32px;border-radius:4px;border-color:rgba(230,238,214,.42);background:#2b451d;color:#fff;padding:0 9px;text-align:left}
+.status-filter .status-tabs button{justify-content:space-between;display:flex;align-items:center;width:100%;min-height:32px;height:auto;border-radius:4px;border-color:rgba(230,238,214,.42);background:#2b451d;color:#fff;padding:7px 9px;text-align:left;gap:8px;line-height:1.25}
+.status-filter .status-tabs .tab-label{flex:1;min-width:0}
 .status-filter .status-tabs button.active{background:#e9efdc;color:#203915;border-color:#e9efdc}
-.status-filter .status-tabs .count{color:inherit;margin-left:auto}
+.status-filter .status-tabs .count{color:inherit;margin-left:8px;white-space:nowrap}
 .dashboard-main{max-width:none;margin:0;padding:0}
 .analysis-grid{display:grid;grid-template-columns:repeat(2,minmax(300px,1fr));gap:12px}
 .analysis-grid .card,.table-card{border:1px solid var(--card-line);border-radius:10px;background:#fff;box-shadow:0 1px 5px rgba(17,24,39,.13);padding:14px}
@@ -82,7 +83,18 @@ body{background:var(--dash-bg);font-family:Inter,Roboto,"Segoe UI",Arial,sans-se
 .inventory-table .main-col,.inventory-table col.main-col{background:#fbfcf8!important}
 .valuebar-fill{background:rgba(89,104,47,.2)}
 @media(max-width:1100px){.dashboard-layout{grid-template-columns:1fr}.dashboard-sidebar{position:static;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}.side-kpis{grid-column:1/-1;grid-template-columns:repeat(3,1fr)}.status-filter{grid-column:1/-1}.status-filter .status-tabs{display:flex}.status-filter .status-tabs button{width:auto}.analysis-grid{grid-template-columns:1fr}}
-@media(max-width:760px){.dashboard-shell{padding:12px}.report-hero{border-radius:12px;padding:18px 14px}.report-hero h1{font-size:22px}.dashboard-sidebar,.side-kpis{grid-template-columns:1fr}.warehouse-summary{grid-template-columns:1fr}.table-toolbar{display:grid}.table-toolbar .seg{overflow:auto}.analysis-grid{gap:10px}}
+@media(max-width:760px){.dashboard-shell{padding:12px 72px 12px 12px}.report-hero{border-radius:12px;padding:18px 14px}.report-hero h1{font-size:22px}.dashboard-sidebar,.side-kpis{grid-template-columns:1fr}.warehouse-summary{grid-template-columns:1fr}.table-toolbar{display:grid}.table-toolbar .seg{overflow:auto}.analysis-grid{gap:10px}}
+/* Unified typography */
+:root{--font-ui:"Inter","Segoe UI Variable","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+html,body,input,select,button,textarea,table,th,td{font-family:var(--font-ui)!important}
+body{font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-feature-settings:"cv02","cv03","cv04","cv11";letter-spacing:0}
+button,input,select{font:inherit;letter-spacing:0}
+.report-hero h1{font-family:var(--font-ui)!important;font-weight:800;letter-spacing:0}
+.analysis-grid h2,.table-card h2,.whname,.warehouse-summary .whname,.filter-card label,.status-tabs button,.seg button{font-family:var(--font-ui)!important;font-weight:700;letter-spacing:0}
+.side-kpis .kpi .value,.kpi .value,.stat b,.chartvalue,.valuebar-text,.sku,.diff-value{font-family:var(--font-ui)!important;font-variant-numeric:tabular-nums;font-weight:750}
+.side-kpis .kpi .label,.side-kpis .kpi .hint,.chartlabel,.legendrow,.product-main,.product-meta,.pill,.quick-action{font-family:var(--font-ui)!important;letter-spacing:0}
+.inventory-table th{font-family:var(--font-ui)!important;font-weight:700;letter-spacing:0}
+.inventory-table td{font-family:var(--font-ui)!important;font-weight:400;letter-spacing:0}
 </style>
 </head>
 <body>
@@ -169,7 +181,7 @@ function baseRows(){if(currentView==='actions')return data.rows.filter(r=>effect
 function passFilter(r,f){if(f==='negative')return hasNegativeStock(r);if(f==='diff_large')return isLargeDiff(r)&&!hasNegativeStock(r);if(f==='diff')return r.diff_ton!==0||r.diff_kha_dung!==0;if(f==='only_main')return r.main_ton>0&&r.pos_ton<=0;if(f==='only_pos')return r.main_ton<=0&&r.pos_ton>0;if(f==='pos_need')return r.pos_kha_dung<=0&&r.main_kha_dung>0&&!hasNegativeStock(r);if(f==='main_need')return r.main_kha_dung<=0&&r.pos_kha_dung>0&&!hasNegativeStock(r);if(f==='committed')return r.main_dat>0||r.pos_dat>0;return true}
 function passWarehouse(r,w){if(w==='main')return r.main_ton>0||r.main_kha_dung>0||r.main_dat>0;if(w==='pos')return r.pos_ton>0||r.pos_kha_dung>0||r.pos_dat>0;return true}
 const statusTabDefs=[{id:'all',label:'Tất cả',tone:'',count:()=>data.rows.length},{id:'negative',label:'Tồn âm',tone:'danger',count:()=>data.rows.filter(r=>passFilter(r,'negative')).length},{id:'diff_large',label:`Lệch lớn ≥${qty(LARGE_DIFF_MIN_QTY)}`,tone:'danger',count:()=>data.rows.filter(r=>passFilter(r,'diff_large')).length},{id:'pos_need',label:'Cần bổ sung POS',tone:'warn',count:()=>data.rows.filter(r=>passFilter(r,'pos_need')).length},{id:'main_need',label:'Thiếu Kho Tổng',tone:'warn',count:()=>data.rows.filter(r=>passFilter(r,'main_need')).length}];
-function renderStatusTabs(){document.getElementById('statusTabs').innerHTML=statusTabDefs.map(t=>`<button type="button" class="${t.tone||''} ${currentStatus===t.id?'active':''}" data-status="${t.id}">${t.label}<span class="count">${qty(t.count())}</span></button>`).join('');document.querySelectorAll('#statusTabs button').forEach(b=>b.addEventListener('click',()=>{currentStatus=b.dataset.status;renderStatusTabs();render()}))}
+function renderStatusTabs(){document.getElementById('statusTabs').innerHTML=statusTabDefs.map(t=>`<button type="button" class="${t.tone||''} ${currentStatus===t.id?'active':''}" data-status="${t.id}"><span class="tab-label">${t.label}</span><span class="count">(${qty(t.count())})</span></button>`).join('');document.querySelectorAll('#statusTabs button').forEach(b=>b.addEventListener('click',()=>{currentStatus=b.dataset.status;renderStatusTabs();render()}))}
 function render(){const q=document.getElementById('search').value.toLowerCase().trim();const w=document.getElementById('warehouseFilter').value;const rows=baseRows().filter(r=>passWarehouse(r,w)).filter(r=>passFilter(r,currentStatus)).filter(r=>!q||[r.sku,r.barcode,r.san_pham,r.bien_the,categoryOf(r)].join(' ').toLowerCase().includes(q));table(rows)}
 document.getElementById('search').addEventListener('input',render);document.getElementById('warehouseFilter').addEventListener('change',render);
 document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.seg button').forEach(x=>x.classList.remove('active'));b.classList.add('active');currentView=b.dataset.view;render()}));
