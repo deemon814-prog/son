@@ -52,6 +52,15 @@ body{background:var(--dash-bg);font-family:Inter,Roboto,"Segoe UI",Arial,sans-se
 .analysis-grid h2,.table-card h2{text-align:center;margin:0 0 10px;color:#1f2937;font-size:14px;font-weight:850}
 .chart-card{min-height:242px}
 .chart-card .chart{min-height:190px}
+.warehouse-card{grid-column:2;grid-row:1 / span 2}
+.action-card{grid-column:1;display:flex;flex-direction:column;min-height:360px}
+.action-card #actionChart{min-height:205px}
+.atp-panel{margin-top:auto;padding-top:14px;border-top:1px solid #e4e8dc}
+.atp-panel h2{margin-bottom:8px}
+.atp-panel .atp-chart{min-height:86px}
+.atp-panel .chartbars{gap:8px}
+.atp-panel .chartrow{grid-template-columns:150px 1fr 72px}
+.atp-panel .charttrack{height:18px}
 .donutwrap{justify-content:center;gap:16px;min-height:188px}
 .donut{width:150px;height:150px;box-shadow:inset 0 0 0 16px rgba(255,255,255,.78)}
 .donutcenter{width:86px;height:86px;font-size:18px}
@@ -82,7 +91,7 @@ body{background:var(--dash-bg);font-family:Inter,Roboto,"Segoe UI",Arial,sans-se
 .inventory-table th.main-col,.thead-group th.group-main,.thead-sub th.main-col{background:#f1f3ed!important}
 .inventory-table .main-col,.inventory-table col.main-col{background:#fbfcf8!important}
 .valuebar-fill{background:rgba(89,104,47,.2)}
-@media(max-width:1100px){.dashboard-layout{grid-template-columns:1fr}.dashboard-sidebar{position:static;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}.side-kpis{grid-column:1/-1;grid-template-columns:repeat(3,1fr)}.status-filter{grid-column:1/-1}.status-filter .status-tabs{display:flex}.status-filter .status-tabs button{width:auto}.analysis-grid{grid-template-columns:1fr}}
+@media(max-width:1100px){.dashboard-layout{grid-template-columns:1fr}.dashboard-sidebar{position:static;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}.side-kpis{grid-column:1/-1;grid-template-columns:repeat(3,1fr)}.status-filter{grid-column:1/-1}.status-filter .status-tabs{display:flex}.status-filter .status-tabs button{width:auto}.analysis-grid{grid-template-columns:1fr}.warehouse-card,.action-card{grid-column:auto;grid-row:auto}}
 @media(max-width:760px){.dashboard-shell{padding:12px 72px 12px 12px}.report-hero{border-radius:12px;padding:18px 14px}.report-hero h1{font-size:22px}.dashboard-sidebar,.side-kpis{grid-template-columns:1fr}.warehouse-summary{grid-template-columns:1fr}.table-toolbar{display:grid}.table-toolbar .seg{overflow:auto}.analysis-grid{gap:10px}}
 /* Unified typography */
 :root{--font-ui:"Inter","Segoe UI Variable","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
@@ -133,9 +142,8 @@ button,input,select{font:inherit;letter-spacing:0}
     <main class="dashboard-main">
       <section class="analysis-grid">
         <div class="card chart-card"><h2>Cơ cấu SKU</h2><div class="chart" id="skuDonut"></div></div>
-        <div class="card chart-card"><h2>ATP theo kho</h2><div class="chart" id="atpChart"></div></div>
-        <div class="card chart-card"><h2>Trạng thái cần xử lý</h2><div class="chart" id="actionChart"></div></div>
         <div class="card chart-card warehouse-card"><h2>Tổng quan hai kho</h2><div class="warehouse-summary" id="warehouseSummary"></div></div>
+        <div class="card chart-card action-card"><h2>Trạng thái cần xử lý</h2><div class="chart" id="actionChart"></div><div class="atp-panel"><h2>ATP theo kho</h2><div class="chart atp-chart" id="atpChart"></div></div></div>
       </section>
       <section class="card table-card">
         <div class="table-toolbar">
