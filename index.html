@@ -10,7 +10,7 @@
 </head>
 <body>
 <header>
-  <div class="titlebar"><div><h1>BÁO CÁO TỒN KHO UPDATE 17/06/2026</h1></div><div class="sub" id="sourceMeta"></div></div>
+  <div class="titlebar"><div><h1>BÁO CÁO TỒN KHO UPDATE 17/06/2026</h1></div></div>
   <div class="filters"><input id="search" placeholder="Tìm SKU, barcode, sản phẩm"/><select id="statusFilter"><option value="all">Tất cả trạng thái</option><option value="diff">Có lệch tồn</option><option value="only_main">Chỉ Kho Tổng có tồn</option><option value="only_pos">Chỉ Kho POS có tồn</option><option value="pos_need">POS cần bổ sung</option><option value="main_need">Kho Tổng cần kiểm tra</option><option value="committed">Có đặt hàng</option></select><div class="seg"><button class="active" data-view="compare">So sánh SKU</button><button data-view="actions">Cần xử lý</button><button data-view="main">Top Kho Tổng</button><button data-view="pos">Top POS</button></div></div>
 </header>
 <main>
@@ -27,7 +27,7 @@ const money=n=>fmt.format(Math.round(Number(n||0)))+'₫';
 const pct=n=>(Number(n||0)).toLocaleString('vi-VN',{maximumFractionDigits:1})+'%';
 const s=data.summary;
 let currentView='compare';
-document.getElementById('sourceMeta').textContent=`${qty(s.sku_count)} SKU đối soát`;
+
 function kpi(label,value,hint){return `<div class="card kpi"><div class="label">${label}</div><div class="value">${value}</div><div class="hint">${hint||''}</div></div>`}
 document.getElementById('kpis').innerHTML=[kpi('SKU đối soát',qty(s.sku_count),`${qty(s.overlap)} SKU có tồn cả hai kho`),kpi('Chỉ Kho Tổng có tồn',qty(s.only_main),`${qty(s.pos_need_count)} SKU POS cần bổ sung`),kpi('Chỉ Kho POS có tồn',qty(s.only_pos),`${qty(s.main_need_count)} SKU Kho Tổng cần kiểm tra`),kpi('Chênh tồn Tổng - POS',qty(s.diff_ton),s.diff_ton>=0?'Kho Tổng cao hơn':'POS cao hơn'),kpi('Giá trị Kho Tổng',money(s.main.tong_gia_ban),`Biên ${pct(s.main.bien_loi_nhuan)}`),kpi('Giá trị Kho POS',money(s.pos.tong_gia_ban),`Biên ${pct(s.pos.bien_loi_nhuan)}`)].join('');
 function whBox(x,type){return `<div class="whbox ${type}"><div class="whname">${x.kho}</div><div class="whstats"><div class="stat"><span>SKU</span><b>${qty(x.skus)}</b></div><div class="stat"><span>Tồn</span><b>${qty(x.ton)}</b></div><div class="stat"><span>Khả dụng</span><b>${qty(x.kha_dung)}</b></div><div class="stat"><span>Đã đặt</span><b>${qty(x.dat)}</b></div><div class="stat"><span>Chờ nhập</span><b>${qty(x.cho_nhap)}</b></div><div class="stat"><span>Giá bán tồn</span><b>${money(x.tong_gia_ban)}</b></div><div class="stat"><span>Lợi nhuận</span><b>${money(x.tong_loi_nhuan)}</b></div><div class="stat"><span>Khả dụng/Tồn</span><b>${pct(x.ty_le_kha_dung)}</b></div></div></div>`}
