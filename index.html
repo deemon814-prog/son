@@ -27,6 +27,7 @@ body{background:var(--dash-bg);font-family:Inter,Roboto,"Segoe UI",Arial,sans-se
 .dashboard-shell{max-width:1780px;margin:0 auto;padding:18px 82px 26px 22px}
 .report-hero{position:sticky;top:0;z-index:30;background:var(--olive);border:1px solid rgba(33,48,22,.15);border-radius:18px;box-shadow:0 3px 8px rgba(17,24,39,.25);padding:24px 28px;margin-bottom:10px;text-align:center}
 .report-hero h1{margin:0;color:#fff;font-size:30px;line-height:1.2;font-weight:850;letter-spacing:.01em}
+.title-update{display:block;margin-top:5px;color:#e8efd8;font-size:13px;font-weight:650;line-height:1.25}
 .dashboard-layout{display:grid;grid-template-columns:292px minmax(0,1fr);gap:12px;align-items:start}
 .dashboard-sidebar{position:sticky;top:96px;display:grid;gap:10px;padding:4px 0}
 .side-kpis{display:grid;gap:10px}
@@ -97,7 +98,7 @@ body{background:var(--dash-bg);font-family:Inter,Roboto,"Segoe UI",Arial,sans-se
 .inventory-table .main-col,.inventory-table col.main-col{background:#fbfcf8!important}
 .valuebar-fill{background:rgba(89,104,47,.2)}
 @media(max-width:1100px){.dashboard-layout{grid-template-columns:1fr}.dashboard-sidebar{position:static;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}.side-kpis{grid-column:1/-1;grid-template-columns:repeat(3,1fr)}.status-filter{grid-column:1/-1}.status-filter .status-tabs{display:flex}.status-filter .status-tabs button{width:auto}.analysis-grid{grid-template-columns:1fr}.warehouse-card,.action-card{grid-column:auto;grid-row:auto}}
-@media(max-width:760px){.dashboard-shell{padding:12px 72px 12px 12px}.report-hero{border-radius:12px;padding:18px 14px}.report-hero h1{font-size:22px}.dashboard-sidebar,.side-kpis{grid-template-columns:1fr}.warehouse-summary{grid-template-columns:1fr}.table-toolbar{display:grid}.table-actions{justify-content:flex-start}.table-toolbar .seg{overflow:auto}.analysis-grid{gap:10px}}
+@media(max-width:760px){.dashboard-shell{padding:12px 72px 12px 12px}.report-hero{border-radius:12px;padding:18px 14px}.report-hero h1{font-size:22px}.title-update{font-size:12px}.dashboard-sidebar,.side-kpis{grid-template-columns:1fr}.warehouse-summary{grid-template-columns:1fr}.table-toolbar{display:grid}.table-actions{justify-content:flex-start}.table-toolbar .seg{overflow:auto}.analysis-grid{gap:10px}}
 /* Unified typography */
 :root{--font-ui:"Inter","Segoe UI Variable","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
 html,body,input,select,button,textarea,table,th,td{font-family:var(--font-ui)!important}
@@ -132,7 +133,52 @@ button,input,select{font:inherit;letter-spacing:0}
 .inventory-table tbody td.sku-col{z-index:7!important;background:#fff!important}
 .inventory-table tbody tr:hover td.stt-col,.inventory-table tbody tr:hover td.sku-col{background:#fbfdff!important}
 .tablewrap{scroll-padding-top:88px}
-.title-update{display:inline-block;margin-left:12px;color:#dfe8ce;font-size:13px;font-weight:700;letter-spacing:0;white-space:nowrap}@media(max-width:760px){.title-update{display:block;margin:7px 0 0;white-space:normal}}</style>
+/* Responsive polish: compact header, stable warehouse cards, readable table density */
+.dashboard-shell{padding:14px 28px 24px;max-width:1680px}
+.report-hero{padding:14px 22px;border-radius:12px;margin-bottom:12px}
+.report-hero h1{font-size:24px;line-height:1.16}
+.title-update{margin-top:4px;font-size:12px}
+.warehouse-card{min-height:0}
+.warehouse-card .warehouse-summary{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.warehouse-card .whbox{padding:11px;border-radius:8px}
+.warehouse-card .whname{min-height:0;margin-bottom:8px;font-size:12px}
+.warehouse-card .whstats{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;border:0;background:transparent;overflow:visible}
+.warehouse-card .stat{display:block;border:1px solid #e1e6d7;border-radius:6px;padding:7px 8px;background:#fff;min-height:52px}
+.warehouse-card .stat span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:10px;line-height:1.15}
+.warehouse-card .stat b{display:block;margin-top:4px;text-align:left;font-size:13px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.warehouse-card .atp-panel{margin-top:16px;padding:14px 4px 0;border-top:1px solid #e1e6d7}
+.warehouse-card .atp-panel h2{margin-bottom:10px}
+.warehouse-card .atp-chart{min-height:92px}
+.warehouse-card .atp-panel .chartbars{gap:9px}
+.warehouse-card .atp-panel .chartrow{grid-template-columns:150px 1fr 68px}
+.warehouse-card .atp-panel .charttrack{height:18px}
+.action-card{min-height:0}
+.table-toolbar{align-items:flex-start}
+.table-actions{gap:8px}
+.table-card .tablewrap{max-height:64vh}
+.inventory-table{font-size:12.5px;line-height:1.35}
+.inventory-table.compact{min-width:1320px}
+.inventory-table.full{min-width:1790px}
+.inventory-table th{font-size:11.5px;line-height:1.25}
+.inventory-table td{line-height:1.35}
+.inventory-table.compact td{padding:10px 10px}
+.inventory-table.compact .thead-group th{height:36px;padding:8px 10px}
+.inventory-table.compact .thead-sub th{height:38px;padding:8px 10px}
+.inventory-table.compact .product-col{width:288px}
+.inventory-table.compact .sku-col{width:142px}
+.inventory-table.compact .main-col,.inventory-table.compact .pos-col{width:74px}
+.inventory-table.compact .diff-col{width:104px}
+.inventory-table.compact .norm-col{width:114px}
+.inventory-table.compact .value-col{width:174px}
+.inventory-table.compact .status-col{width:188px}
+.inventory-table .product-main{font-size:12.8px}
+.inventory-table .product-meta,.inventory-table .sub,.norm-sub,.diff-direction{font-size:11px}
+.inventory-table .pill{padding:5px 9px;min-height:28px}
+.inventory-table.compact .valuebar{height:30px}
+@media(max-width:1320px){.warehouse-card .warehouse-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.dashboard-shell{padding-right:18px}.report-hero{position:static}}
+@media(max-width:980px){.warehouse-card .warehouse-summary{grid-template-columns:1fr}.warehouse-card .whstats{grid-template-columns:repeat(2,minmax(0,1fr))}.dashboard-shell{padding:12px}.report-hero h1{font-size:21px}.table-actions{justify-content:flex-start}.table-toolbar{display:grid}}
+@media(max-width:620px){.warehouse-card .whstats{grid-template-columns:1fr}.report-hero{padding:12px 10px}.report-hero h1{font-size:18px}.title-update{font-size:11px}.table-card .tablewrap{max-height:68vh}}
+</style>
 </head>
 <body>
 <div class="dashboard-shell">
@@ -158,8 +204,8 @@ button,input,select{font:inherit;letter-spacing:0}
     <main class="dashboard-main">
       <section class="analysis-grid">
         <div class="card chart-card"><h2>Cơ cấu SKU</h2><div class="chart" id="skuDonut"></div></div>
-        <div class="card chart-card warehouse-card"><h2>Tổng quan hai kho</h2><div class="warehouse-summary" id="warehouseSummary"></div></div>
-        <div class="card chart-card action-card"><h2>Trạng thái cần xử lý</h2><div class="chart" id="actionChart"></div><div class="atp-panel"><h2>ATP theo kho</h2><div class="chart atp-chart" id="atpChart"></div></div></div>
+        <div class="card chart-card warehouse-card"><h2>Tổng quan hai kho</h2><div class="warehouse-summary" id="warehouseSummary"></div><div class="atp-panel"><h2>ATP theo kho</h2><div class="chart atp-chart" id="atpChart"></div></div></div>
+        <div class="card chart-card action-card"><h2>Trạng thái cần xử lý</h2><div class="chart" id="actionChart"></div></div>
       </section>
       <section class="card table-card">
         <div class="table-toolbar">
@@ -168,6 +214,7 @@ button,input,select{font:inherit;letter-spacing:0}
             <button type="button" class="export-button" id="exportExcel">Xuất Excel</button>
           </div>
           <div class="table-actions">
+            <div class="seg density-seg" id="tableDensity"><button class="active" data-density="compact">Gọn</button><button data-density="full">Đầy đủ</button></div>
             <div class="seg view-seg"><button class="active" data-view="compare">So sánh SKU</button><button data-view="actions">Cần xử lý</button><button data-view="main">Top Kho Tổng</button><button data-view="pos">Top POS</button></div>
             <div class="seg unit-seg" id="unitToggle"><button class="active" data-unit="base">Đơn vị nhỏ</button><button data-unit="case">Thùng</button></div>
           </div>
@@ -187,6 +234,7 @@ const s=data.summary;
 let currentView='compare';
 let currentUnit='base';
 let currentStatus='all';
+let tableDensity='compact';
 let currentRows=[];
 const LARGE_DIFF_MIN_QTY=300;
 function accountingValue(r){return Math.max(0,Number(r.total_value||0))}
@@ -228,7 +276,12 @@ function transferCell(v,r){const n=displayValue(r,'suggest_to_pos');if(n==null)r
 function rowClass(r){const a=effectiveAction(r);if(/Lệch|vượt|đứt|âm/i.test(a))return 'row-risk';if(/Bổ sung|Kiểm tra|thiếu|cần/i.test(a))return 'row-warn';return 'row-ok'}
 function quickAction(r){const sku=esc(r.sku);const a=effectiveAction(r);if(hasNegativeStock(r))return `<button type="button" class="quick-action risk" data-sku="${sku}">Yêu cầu kiểm kho</button>`;if(r.pos_kha_dung<=0&&r.main_kha_dung>0)return `<button type="button" class="quick-action warn" data-sku="${sku}">Tạo chuyển kho</button>`;if(r.main_kha_dung<=0&&r.pos_kha_dung>0)return `<button type="button" class="quick-action warn" data-sku="${sku}">Tạo phiếu bù</button>`;if(/Lệch|vượt|đứt|âm/i.test(a))return `<button type="button" class="quick-action risk" data-sku="${sku}">Kiểm tra</button>`;return `<button type="button" class="quick-action muted" data-sku="${sku}">Đã ổn</button>`}
 const cols=[{label:'STT',key:'stt',cls:'stt-col',f:(v,r,i)=>qty(i+1)},{label:'SKU',key:'sku',cls:'sku-col',f:(v,r)=>`<div class="sku">${v}</div><div class="sub">${r.barcode||''}</div>`},{label:'Nhóm',key:'san_pham',cls:'group-col',f:(v,r)=>`<span class="groupCell">${categoryOf(r)}</span>`},{label:'Sản phẩm',key:'san_pham',cls:'product-col sep-right',f:(v,r)=>formatProduct(r)},{label:'Tồn',key:'main_ton',cls:'main-col',num:true,f:(v,r)=>qtyCell(v,r,'main_ton')},{label:'KD',key:'main_kha_dung',cls:'main-col',num:true,f:(v,r)=>qtyCell(v,r,'main_kha_dung')},{label:'Đặt',key:'main_dat',cls:'main-col sep-right',num:true,f:(v,r)=>qtyCell(v,r,'main_dat')},{label:'Tồn',key:'pos_ton',cls:'pos-col',num:true,f:(v,r)=>qtyCell(v,r,'pos_ton')},{label:'KD',key:'pos_kha_dung',cls:'pos-col',num:true,f:(v,r)=>qtyCell(v,r,'pos_kha_dung')},{label:'Đặt',key:'pos_dat',cls:'pos-col sep-right',num:true,f:(v,r)=>qtyCell(v,r,'pos_dat')},{label:'Tồn',key:'diff_ton',cls:'diff-col',num:true,f:(v,r)=>diffCell(v,r,'diff_ton')},{label:'KD',key:'diff_kha_dung',cls:'diff-col sep-right',num:true,f:(v,r)=>diffCell(v,r,'diff_kha_dung')},{label:'Bán/ngày',key:'avg_daily_total',cls:'norm-col',num:true,f:salesCell},{label:'Tổng min-max',key:'main_min',cls:'norm-col',num:true,f:(v,r)=>minMaxCell(r,'main_min','main_max')},{label:'POS min-max',key:'pos_min',cls:'norm-col',num:true,f:(v,r)=>minMaxCell(r,'pos_min','pos_max')},{label:'Cover POS',key:'pos_days_cover',cls:'norm-col',num:true,f:coverCell},{label:'Chuyển POS',key:'suggest_to_pos',cls:'norm-col sep-right',num:true,f:transferCell},{label:'Giá trị tồn',key:'total_value',cls:'value-col',num:true,f:valueBar},{label:'Trạng thái',key:'status',cls:'status-col',f:(v,r)=>statusPill(r)},{label:'Định mức',key:'norm_status',cls:'status-col',f:normStatusCell},{label:'Thao tác',key:'action',cls:'action-col',f:(v,r)=>quickAction(r)}];
-function table(rows){tableMaxValue=Math.max(...rows.map(r=>accountingValue(r)),1);const colgroup=`<colgroup>${cols.map(c=>`<col class="${c.cls||''}">`).join('')}</colgroup>`;const groupHead=`<thead><tr class="thead-group"><th colspan="4" class="group-title sep-right">THÔNG TIN SKU</th><th colspan="3" class="group-title group-main sep-right">KHO TỔNG MTB</th><th colspan="3" class="group-title group-pos sep-right">KHO POS</th><th colspan="2" class="group-title sep-right">LỆCH TỔNG VS POS</th><th colspan="5" class="group-title sep-right">ĐỊNH MỨC THỬ</th><th colspan="4" class="group-title">GIÁ TRỊ & XỬ LÝ</th></tr><tr class="thead-sub">${cols.map(c=>`<th class="${c.num?'num ':''}${c.cls||''}">${c.label}</th>`).join('')}</tr></thead>`;document.getElementById('mainTable').className='inventory-table';document.getElementById('mainTable').innerHTML=`${colgroup}${groupHead}<tbody>${rows.map((r,i)=>`<tr class="${rowClass(r)}">${cols.map(c=>`<td class="${c.num?'num ':''}${c.cls||''}">${c.f?c.f(r[c.key],r,i):(r[c.key]??'')}</td>`).join('')}</tr>`).join('')}</tbody>`}
+const hiddenColIndexes=new Set([20]);
+const compactColIndexes=new Set([0,1,3,4,5,7,8,11,12,14,15,16,17,18,19]);
+function groupForIndex(i){if(i<4)return {key:'sku',label:'THÔNG TIN SKU',cls:'sep-right'};if(i<7)return {key:'main',label:'KHO TỔNG MTB',cls:'group-main sep-right'};if(i<10)return {key:'pos',label:'KHO POS',cls:'group-pos sep-right'};if(i<12)return {key:'diff',label:'LỆCH TỔNG VS POS',cls:'sep-right'};if(i<17)return {key:'norm',label:'ĐỊNH MỨC THỬ',cls:'sep-right'};return {key:'action',label:'GIÁ TRỊ & TRẠNG THÁI',cls:''}}
+function visibleCols(){return cols.map((c,i)=>({...c,_idx:i})).filter(c=>!hiddenColIndexes.has(c._idx)).filter(c=>tableDensity==='full'||compactColIndexes.has(c._idx))}
+function groupHeader(vcols){const groups=[];vcols.forEach(c=>{const g=groupForIndex(c._idx);const last=groups[groups.length-1];if(last&&last.key===g.key)last.count+=1;else groups.push({...g,count:1})});return groups.map(g=>`<th colspan="${g.count}" class="group-title ${g.cls}">${g.label}</th>`).join('')}
+function table(rows){const vcols=visibleCols();tableMaxValue=Math.max(...rows.map(r=>accountingValue(r)),1);const colgroup=`<colgroup>${vcols.map(c=>`<col class="${c.cls||''}">`).join('')}</colgroup>`;const groupHead=`<thead><tr class="thead-group">${groupHeader(vcols)}</tr><tr class="thead-sub">${vcols.map(c=>`<th class="${c.num?'num ':''}${c.cls||''}">${c.label}</th>`).join('')}</tr></thead>`;document.getElementById('mainTable').className=`inventory-table ${tableDensity}`;document.getElementById('mainTable').innerHTML=`${colgroup}${groupHead}<tbody>${rows.map((r,i)=>`<tr class="${rowClass(r)}">${vcols.map(c=>`<td class="${c.num?'num ':''}${c.cls||''}">${c.f?c.f(r[c.key],r,i):(r[c.key]??'')}</td>`).join('')}</tr>`).join('')}</tbody>`}
 function baseRows(){if(currentStatus!=='all')return data.rows;if(currentView==='actions')return data.rows.filter(r=>effectiveAction(r)!=='Ổn');if(currentView==='main')return data.topMain||data.rows;if(currentView==='pos')return data.topPos||data.rows;return data.rows}
 function passFilter(r,f){if(f==='negative')return hasNegativeStock(r);if(f==='diff_large')return isLargeDiff(r)&&!hasNegativeStock(r);if(f==='diff')return r.diff_ton!==0||r.diff_kha_dung!==0;if(f==='only_main')return r.main_ton>0&&r.pos_ton<=0;if(f==='only_pos')return r.main_ton<=0&&r.pos_ton>0;if(f==='pos_need')return r.pos_kha_dung<=0&&r.main_kha_dung>0&&!hasNegativeStock(r);if(f==='main_need')return r.main_kha_dung<=0&&r.pos_kha_dung>0&&!hasNegativeStock(r);if(f==='below_min')return r.norm_status==='Dưới định mức';if(f==='over_max')return r.norm_status==='Vượt max';if(f==='no_sales')return r.norm_status==='Chưa có dữ liệu bán';if(f==='missing_conversion')return !r.case_factor;if(f==='committed')return r.main_dat>0||r.pos_dat>0;return true}
 function passWarehouse(r,w){if(w==='main')return r.main_ton>0||r.main_kha_dung>0||r.main_dat>0;if(w==='pos')return r.pos_ton>0||r.pos_kha_dung>0||r.pos_dat>0;return true}
@@ -247,6 +300,7 @@ function exportExcel(){const rows=currentRows.length?currentRows:filteredRows();
 document.getElementById('search').addEventListener('input',render);document.getElementById('warehouseFilter').addEventListener('change',render);
 document.getElementById('exportExcel').addEventListener('click',exportExcel);
 document.querySelectorAll('.view-seg button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.view-seg button').forEach(x=>x.classList.remove('active'));b.classList.add('active');currentView=b.dataset.view;render()}));
+document.querySelectorAll('#tableDensity button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#tableDensity button').forEach(x=>x.classList.remove('active'));b.classList.add('active');tableDensity=b.dataset.density;render()}));
 document.querySelectorAll('#unitToggle button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#unitToggle button').forEach(x=>x.classList.remove('active'));b.classList.add('active');currentUnit=b.dataset.unit;render()}));
 document.getElementById('mainTable').addEventListener('click',e=>{const btn=e.target.closest('.quick-action');if(!btn||btn.classList.contains('muted'))return;btn.textContent='Đã ghi nhận';btn.className='quick-action muted'});
 renderStatusTabs();
@@ -254,4 +308,5 @@ render();
 </script>
 </body>
 </html>
+
 
